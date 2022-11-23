@@ -9,8 +9,9 @@ import { NativeBaseProvider, StatusBar } from 'native-base';
 
 import { Loading } from '@components/Loading';
 
+import { theme } from '@styles/theme';
+
 import { Routes } from './routes';
-import { theme } from './styles/theme';
 
 export default function App() {
 	const [fontsLoaded] = useFonts({

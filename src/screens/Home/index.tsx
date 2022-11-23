@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 import * as Location from 'expo-location';
+import { LocationObject } from 'expo-location';
 import { VStack } from 'native-base';
-import MapView from 'react-native-maps';
+import MapView, { Marker, MarkerAnimated } from 'react-native-maps';
 
 type OriginProps = {
 	latitude: number;
@@ -12,50 +13,69 @@ type OriginProps = {
 };
 
 export function Home() {
-	const [origin, setOrigin] = useState<OriginProps>({} as OriginProps);
+	const [origin, setOrigin] = useState({} as LocationObject);
 	const [destination, setDestination] = useState();
+	const [camera, setCamera] = useState({
+		center: {
+			latitude: 0,
+			longitude: 0,
+		},
+		pitch: 0,
+		heading: 0,
+		altitude: 1000,
+		zoom: 16,
+	});
 
-	async function getPermission() {
-		const { status } = await Location.requestForegroundPermissionsAsync();
-
-		if (status !== 'granted') {
-			throw new Error('Permission to access location was denied');
-		}
-
-		const location = await Location.getCurrentPositionAsync({
-			accuracy: Location.Accuracy.High,
-		});
-
-		setOrigin({
-			latitude: location.coords.latitude,
-			longitude: location.coords.longitude,
-			latitudeDelta: 0.0922,
-			longitudeDelta: 0.0421,
-		});
-	}
+	const [errorMsg, setErrorMsg] = useState('');
 
 	useEffect(() => {
-		// getPermission();
+		const startTracking = async () => {
+			const { status } = await Location.requestForegroundPermissionsAsync();
+			if (status !== 'granted') {
+				alert('Permissões para acessar a localização foram negadas.');
+				return;
+			}
+			try {
+				await Location.watchPositionAsync(
+					{
+						accuracy: Location.Accuracy.Highest,
+						timeInterval: 5000,
+						distanceInterval: 50,
+					},
+					(loc) => {
+						setCamera((prevCamera) => ({
+							...prevCamera,
+							center: {
+								latitude: loc.coords.latitude,
+								longitude: loc.coords.longitude,
+							},
+						}));
+					},
+				);
+			} catch (err) {
+				console.warn('Algo deu errado...');
+			}
+		};
+		startTracking();
 	}, []);
+
+	const getDirections = (latitude: number, longitude: number) => {
+		setDestination({
+			latitude: latitude,
+			longitude: longitude,
+		});
+	};
 
 	return (
 		<VStack flex={1}>
 			<MapView
-				style={{
-					flex: 1,
-					width: '100%',
-					height: '100%',
-					zIndex: -1,
-					position: 'absolute',
-				}}
-				initialRegion={{
-					latitude: -23.5505,
-					longitude: -46.6333,
-					latitudeDelta: 0.0922,
-					longitudeDelta: 0.0421,
-				}}
-				showsUserLocation
-				showsMyLocationButton
+				camera={center}
+				showsUserLocation={true}
+				showsMyLocationButton={false}
+				zoomControlEnabled={true}
+				loadingEnabled={true}
+				loadingBackgroundColor={'#fff'}
+				toolbarEnabled={false}
 			/>
 		</VStack>
 	);

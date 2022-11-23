@@ -1,5 +1,6 @@
 import { NativeBaseProvider, NativeBaseProviderProps } from 'native-base';
-import { theme } from 'src/styles/theme';
+
+import { theme } from '@styles/theme';
 
 export const ProviderTesting = (props: NativeBaseProviderProps) => {
 	const inset = {
