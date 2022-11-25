@@ -1,13 +1,51 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {
+	createNativeStackNavigator,
+	NativeStackNavigationProp,
+} from '@react-navigation/native-stack';
 
 import { Home } from '@screens/Home';
+import { Map } from '@screens/Map';
 
-const { Navigator, Screen } = createNativeStackNavigator();
+type AppRoutes = {
+	home: undefined;
+	map: undefined;
+};
+
+export type AppNavigatorRoutesProps = NativeStackNavigationProp<AppRoutes>;
+
+const { Navigator, Screen } = createNativeStackNavigator<AppRoutes>();
 
 export function AppRoutes() {
 	return (
-		<Navigator screenOptions={{ headerShown: false }}>
-			<Screen name="home" component={Home} />
+		<Navigator screenOptions={{ headerShown: true }}>
+			<Screen
+				name="home"
+				component={Home}
+				options={{
+					headerTitle: 'Buscar Herói',
+					headerTitleAlign: 'center',
+					headerTitleStyle: {
+						fontFamily: 'Roboto',
+						fontWeight: 'bold',
+						fontSize: 23,
+						color: '#242E42',
+					},
+				}}
+			/>
+			<Screen
+				name="map"
+				component={Map}
+				options={{
+					headerTitle: 'Localização do Herói',
+					headerTitleAlign: 'center',
+					headerTitleStyle: {
+						fontFamily: 'Roboto',
+						fontWeight: 'bold',
+						fontSize: 23,
+						color: '#242E42',
+					},
+				}}
+			/>
 		</Navigator>
 	);
 }

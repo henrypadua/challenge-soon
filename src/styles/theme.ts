@@ -2,7 +2,7 @@ import { extendTheme } from 'native-base';
 
 export const theme = extendTheme({
 	fonts: {
-		heading: 'Inter_700Bold',
+		heading: 'Inter_500Medium',
 		body: 'Inter_400Regular',
 	},
 	fontSizes: {

@@ -2,7 +2,7 @@ import { render } from '@testing-library/react-native';
 
 import { ProviderTesting } from '@utils/ProviderTesting';
 
-import { Home } from '@screens/Home';
+import { Home } from '@screens/Map';
 
 jest.useFakeTimers();
 
