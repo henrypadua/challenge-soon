@@ -22,7 +22,7 @@ export function AppRoutes() {
 				name="home"
 				component={Home}
 				options={{
-					headerTitle: 'Buscar Herói',
+					headerTitle: 'Search Hero',
 					headerTitleAlign: 'center',
 					headerTitleStyle: {
 						fontFamily: 'Roboto',
@@ -36,7 +36,7 @@ export function AppRoutes() {
 				name="map"
 				component={Map}
 				options={{
-					headerTitle: 'Localização do Herói',
+					headerTitle: 'Hero Location',
 					headerTitleAlign: 'center',
 					headerTitleStyle: {
 						fontFamily: 'Roboto',

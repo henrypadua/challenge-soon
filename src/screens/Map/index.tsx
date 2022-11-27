@@ -1,10 +1,10 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { Dimensions } from 'react-native';
 
 import { GOOGLE_MAPS_APIKEY } from '@env';
 import { useMap } from '@hooks/useMap';
-import { Button, Image, Spinner, Text, VStack } from 'native-base';
-import MapView, { Marker } from 'react-native-maps';
+import { Button, Image, Spinner, Text, View, VStack } from 'native-base';
+import MapView, { Marker, Polyline } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 
 import utils from '@utils/Utils';
@@ -16,14 +16,18 @@ import { mapStyle } from '@styles/mapStyle';
 export function Map() {
 	const [isReady, setIsReady] = useState(false);
 	const [angle, setAngle] = useState(0);
-	const [infoRoute, setInfoRoute] = useState({
-		distance: 0,
-		duration: 0,
-	});
+
 	const [openModal, setOpenModal] = useState(false);
 
 	const mapView = useRef<MapView>(null);
-	const { isLoading, origin, destination } = useMap();
+	const {
+		isLoading,
+		origin,
+		destination,
+		setInfoRoute,
+		destinationPlace,
+		originPlace,
+	} = useMap();
 
 	return (
 		<>
@@ -47,8 +51,8 @@ export function Map() {
 					}}
 					customMapStyle={mapStyle}
 					region={{
-						latitude: origin?.latitude,
-						longitude: origin?.longitude,
+						latitude: origin?.latitude || 0,
+						longitude: origin?.longitude || 0,
 						latitudeDelta: 0.0922,
 						longitudeDelta: 0.0421,
 					}}
@@ -61,6 +65,7 @@ export function Map() {
 					}}
 					showsBuildings={false}
 					showsPointsOfInterest={false}
+					showsCompass={false}
 				>
 					{origin && (
 						<Marker
@@ -99,12 +104,13 @@ export function Map() {
 						</Marker>
 					)}
 					<MapViewDirections
-						origin={origin}
-						destination={destination}
+						origin={origin || undefined}
+						destination={destination || undefined}
 						apikey={GOOGLE_MAPS_APIKEY}
 						strokeWidth={5}
 						strokeColor="#9722FB"
 						optimizeWaypoints={true}
+						mode="DRIVING"
 						onReady={(result) => {
 							setInfoRoute({
 								distance: result.distance,
@@ -128,18 +134,32 @@ export function Map() {
 									);
 									setAngle(calculatedAngle);
 								}
-								setIsReady(true);
 							}
 						}}
 					/>
 				</MapView>
 			)}
 
-			<ModalInfo
-				infoRoute={infoRoute}
-				openModal={openModal}
-				setOpenModal={setOpenModal}
-			/>
+			{destinationPlace && originPlace && isReady && !openModal && (
+				<View
+					style={{
+						position: 'absolute',
+						bottom: 10,
+						right: 80,
+						marginRight: 10,
+						elevation: 10,
+						width: 200,
+					}}
+				>
+					<Button bgColor="#242E42" onPress={() => setOpenModal(true)}>
+						<Text fontFamily="heading" fontSize={17} color="#fff">
+							Request Detail
+						</Text>
+					</Button>
+				</View>
+			)}
+
+			<ModalInfo openModal={openModal} setOpenModal={setOpenModal} />
 		</>
 	);
 }
