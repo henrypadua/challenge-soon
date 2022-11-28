@@ -23,7 +23,6 @@ export function Home() {
 	} = useMap();
 
 	const checkNavigation = () => {
-		console.log('originPlace', originPlace);
 		if (originPlace && destinationPlace) {
 			setDestination({
 				latitude: destinationPlace.details?.geometry.location.lat || 0,

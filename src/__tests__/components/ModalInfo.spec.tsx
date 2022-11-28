@@ -2,7 +2,9 @@ import { render } from '@testing-library/react-native';
 
 import { ProviderTesting } from '@utils/ProviderTesting';
 
-import { Map } from '@screens/Map';
+import { ModalInfo } from '@components/ModalInfo';
+
+const setOpenModal = jest.fn();
 
 jest.mock('@hooks/useMap', () => ({
 	useMap() {
@@ -19,7 +21,7 @@ jest.mock('@hooks/useMap', () => ({
 test('renders correctly', () => {
 	const screen = render(
 		<ProviderTesting>
-			<Map />
+			<ModalInfo openModal={true} setOpenModal={setOpenModal} />
 		</ProviderTesting>,
 	).toJSON();
 

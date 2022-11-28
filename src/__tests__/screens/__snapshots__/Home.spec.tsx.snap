@@ -1,0 +1,271 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+[
+  <View
+    dataSet={{}}
+    style={
+      {
+        "backgroundColor": "#FFFFFF",
+        "flex": 1,
+        "height": "100%",
+      }
+    }
+  >
+    <View
+      pointerEvents="box-none"
+      style={
+        [
+          {},
+          {
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {},
+            undefined,
+          ]
+        }
+      >
+        <TextInput
+          clearButtonMode="while-editing"
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          onFocus={[Function]}
+          placeholder="Onde você está?"
+          style={
+            [
+              {},
+              {
+                "backgroundColor": "#eee",
+                "borderRadius": 10,
+                "fontSize": 15,
+                "marginLeft": 40,
+                "marginRight": 15,
+                "marginVertical": 5,
+                "padding": 10,
+              },
+            ]
+          }
+          value=""
+        />
+      </View>
+    </View>
+    <View
+      dataSet={{}}
+      style={{}}
+    />
+    <View
+      pointerEvents="box-none"
+      style={
+        [
+          {},
+          {
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 55,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {},
+            undefined,
+          ]
+        }
+      >
+        <TextInput
+          clearButtonMode="while-editing"
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          onFocus={[Function]}
+          placeholder="Para onde vamos?"
+          style={
+            [
+              {},
+              {
+                "backgroundColor": "#eee",
+                "borderRadius": 10,
+                "fontSize": 15,
+                "marginLeft": 40,
+                "marginRight": 15,
+                "marginVertical": 5,
+                "padding": 10,
+              },
+            ]
+          }
+          value=""
+        />
+      </View>
+    </View>
+    <View
+      dataSet={{}}
+      style={{}}
+    />
+    <View
+      dataSet={{}}
+      style={
+        {
+          "flex": 1,
+          "position": "absolute",
+        }
+      }
+    >
+      <Image
+        accessibilityLabel="circle"
+        alt="circle"
+        dataSet={{}}
+        onError={[Function]}
+        source={1}
+        style={
+          [
+            {
+              "maxWidth": "100%",
+            },
+            {
+              "left": 10,
+              "position": "absolute",
+              "top": 20,
+            },
+          ]
+        }
+      />
+      <View
+        dataSet={{}}
+        style={{}}
+      />
+      <Image
+        accessibilityLabel="line"
+        alt="line"
+        dataSet={{}}
+        onError={[Function]}
+        source={1}
+        style={
+          [
+            {
+              "maxWidth": "100%",
+            },
+            {
+              "left": 18,
+              "position": "absolute",
+              "top": 40,
+            },
+          ]
+        }
+      />
+      <View
+        dataSet={{}}
+        style={{}}
+      />
+      <Image
+        accessibilityLabel="square"
+        alt="square"
+        dataSet={{}}
+        onError={[Function]}
+        source={1}
+        style={
+          [
+            {
+              "maxWidth": "100%",
+            },
+            {
+              "left": 10,
+              "position": "absolute",
+              "top": 75,
+            },
+          ]
+        }
+      />
+    </View>
+  </View>,
+  <View
+    dataSet={{}}
+    style={
+      {
+        "paddingBottom": 20,
+        "paddingLeft": 40,
+        "paddingRight": 40,
+        "paddingTop": 20,
+        "zIndex": 1,
+      }
+    }
+  >
+    <View
+      accessibilityRole="button"
+      accessible={true}
+      collapsable={false}
+      colorScheme="primary"
+      dataSet={{}}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "#242E42",
+          "borderRadius": 4,
+          "color": "#FFFFFF",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "paddingBottom": 10,
+          "paddingLeft": 12,
+          "paddingRight": 12,
+          "paddingTop": 10,
+        }
+      }
+    >
+      <View
+        dataSet={{}}
+        style={
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
+        }
+        test={true}
+      >
+        <View
+          dataSet={{}}
+          style={{}}
+        >
+          <Text
+            dataSet={{}}
+            style={
+              {
+                "backgroundColor": undefined,
+                "color": "#FFFFFF",
+                "fontFamily": "Inter_500Medium",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 21,
+                "textDecorationLine": undefined,
+              }
+            }
+          >
+            Search Hero
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>,
+]
+`;
